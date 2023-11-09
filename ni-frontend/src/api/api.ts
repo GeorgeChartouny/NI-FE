@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const api = axios.create({
-    baseURL: process.env.REACT_API_BACKEND_URL,
+const baseApi = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_URL,
     validateStatus:() => true,
     headers: {
         Accept: "application/json",
@@ -12,4 +12,4 @@ const api = axios.create({
     },
 });
 
-export default api;
+export default baseApi;
