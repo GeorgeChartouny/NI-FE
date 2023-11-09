@@ -13,7 +13,7 @@ export const Dashboard = () => {
     try {
         console.log("send")
         // setDatetime_value("2020-03-12 00:15:00");
-    //   if (NeRadio && aggregatedTime && datetime_value) {
+      if (NeRadio && aggregatedTime && datetime_value) {
         console.log("if done")
         const result = await getAggData({
           neRequested: NeRadio,
@@ -22,9 +22,9 @@ export const Dashboard = () => {
         });
         setAggResult(result);
         console.log("aggResult", aggResult);
-    //   }else {
-    //     console.log("else")
-    //   }
+      }else {
+        console.log("else")
+      }
     } catch (error: any) {
       console.log("Error getting data: " + error.message);
     }
