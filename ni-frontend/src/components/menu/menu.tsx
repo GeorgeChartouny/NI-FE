@@ -32,10 +32,10 @@ export const Menu = () => {
   };
 
  return (
-  <>
-
-    <form onSubmit={sendRequest}>
-      <label>
+  <styles.Container>
+<styles.Title>Dashboard</styles.Title>
+    <styles.Form onSubmit={sendRequest}>
+      <styles.Label>
         <input
           type='radio'
           value="ne_type"
@@ -43,8 +43,8 @@ export const Menu = () => {
           onChange={(e) => setNeRadio(e.target.value)}
         />
         Ne_Type
-      </label>
-      <label>
+      </styles.Label>
+      <styles.Label>
         <input
           type='radio'
           value="ne_alias"
@@ -52,10 +52,10 @@ export const Menu = () => {
           onChange={(e) => setNeRadio(e.target.value)}
         />
         Ne_Radio
-      </label>
+      </styles.Label>
  
     <div>
-      <label>
+      <styles.Label>
         <input
           type='radio'
           value="TRANS_MW_AGG_SLOT_HOURLY"
@@ -63,8 +63,8 @@ export const Menu = () => {
           onChange={(e) => setAggregatedTime(e.target.value)}
         />
         Hourly
-      </label>
-      <label>
+      </styles.Label>
+      <styles.Label>
         <input
           type='radio'
           value="TRANS_MW_AGG_SLOT_DAILY"
@@ -72,11 +72,11 @@ export const Menu = () => {
           onChange={(e) => setAggregatedTime(e.target.value)}
         />
         Daily
-      </label>
+      </styles.Label>
     </div>
     <button type="submit" >Send</button>
-    </form>
-  </>
+    </styles.Form>
+  </styles.Container>
 );
 
 };

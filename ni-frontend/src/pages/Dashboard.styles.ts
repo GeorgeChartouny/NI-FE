@@ -14,7 +14,7 @@ class DashboardStyles {
 
   Title = styled.h1``;
 
-  
+
 }
 
 const dashboardStyles = new DashboardStyles();
