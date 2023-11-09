@@ -1,5 +1,6 @@
 import React, {  useState } from "react";
 import { getAggData } from "../../api/aggregateDataApi";
+import styles from "./menu.styles";
 
 export const Menu = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
