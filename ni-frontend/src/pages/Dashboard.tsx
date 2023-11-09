@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { getAggData } from "../api/aggregateDataApi";
 
 export const Dashboard = () => {
