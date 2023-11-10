@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getAggData } from "../../api/aggregateDataApi";
 import styles from "./menu.styles";
-import global from "../../globalStyles/global"
+import global from "../../globalStyles/global";
 
 export const Menu = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
@@ -9,6 +9,8 @@ export const Menu = () => {
   const [datetime_value, setDatetime_value] = useState<string>(
     "2020-03-12 00:15:00"
   );
+
+  const [value, setValue] = useState<boolean>();
   const [aggResult, setAggResult] = useState<object>();
   // const data = {NeRadio,aggregatedTime,datetime_value};
 
@@ -34,11 +36,18 @@ export const Menu = () => {
     }
   };
 
+  const handleClick = () => {
+    setValue(!value);
+  };
+
+  useEffect(() => {
+    console.log("aggregatedTime", aggregatedTime);
+  }, []);
+
   return (
     <styles.Container>
       <styles.Title>Dashboard</styles.Title>
       <styles.Form onSubmit={sendRequest}>
-
         <styles.LabelContainer>
           <styles.Label>
             <input
@@ -58,7 +67,7 @@ export const Menu = () => {
             />
             NE Alias
           </styles.Label>
-          <styles.BorderBreak/>
+          <styles.BorderBreak />
         </styles.LabelContainer>
 
         <styles.LabelContainer>
@@ -79,7 +88,35 @@ export const Menu = () => {
               onChange={(e) => setAggregatedTime(e.target.value)}
             />
             Daily
-          </styles.Label>
+          </styles.Label> 
+
+          {/* <styles.Wrapper>
+            <styles.ToggleButton onClick={handleClick}>
+              <styles.LeftLabel active={value}>
+                <styles.AggInput
+                  type="radio"
+                  value="TRANS_MW_AGG_SLOT_DAILY"
+                  name="aggTime"
+                  onChange={(e: {
+                    target: { value: React.SetStateAction<string> };
+                  }) => setAggregatedTime(e.target.value)}
+                />
+                Daily
+              </styles.LeftLabel>
+
+              <styles.RightLabel active={value}>
+                <styles.AggInput
+                  type="radio"
+                  value="TRANS_MW_AGG_SLOT_HOURLY"
+                  name="aggTime"
+                  onChange={(e: {
+                    target: { value: React.SetStateAction<string> };
+                  }) => setAggregatedTime(e.target.value)}
+                />
+                Hourly
+              </styles.RightLabel>
+            </styles.ToggleButton>
+          </styles.Wrapper> */}
         </styles.LabelContainer>
 
         <global.SubmitButton type="submit">Send</global.SubmitButton>

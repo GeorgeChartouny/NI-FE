@@ -24,6 +24,10 @@ class GlobalStyles {
       cursor: pointer;
     }
   `;
+
+  RadioButton = styled.input`
+  
+  `
 }
 
 const globalStyles = new GlobalStyles();
