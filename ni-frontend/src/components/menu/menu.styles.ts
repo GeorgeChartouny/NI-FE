@@ -23,14 +23,36 @@ class MenuStyles {
 
   Form = styled.form`
     width: auto;
+    height: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
   `;
 
+  LabelContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 400px;
+    height: 50px;
+    /* border-left: 1px solid black; */
+
+  `;
+
+BorderBreak = styled.div`
+
+border:1px var(--secondary-color) solid;
+height: 100%;
+border-radius: var(--primary-radius);
+opacity: 0.7;
+
+`
   Label = styled.label`
-  /* border:2px, black, solid; */
-  width: 200px;
-  height: 100px;
-  color: orange;
-  `
+    color: orange;
+
+  `;
 }
 
 const menuStyles = new MenuStyles();
