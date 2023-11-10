@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getAggData } from "../../api/aggregateDataApi";
 import styles from "./menu.styles";
+import global from "../../globalStyles/global"
 
 export const Menu = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
@@ -81,7 +82,7 @@ export const Menu = () => {
           </styles.Label>
         </styles.LabelContainer>
 
-        <button type="submit">Send</button>
+        <global.SubmitButton type="submit">Send</global.SubmitButton>
       </styles.Form>
     </styles.Container>
   );
