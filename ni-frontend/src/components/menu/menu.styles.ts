@@ -50,65 +50,65 @@ class MenuStyles {
     color: orange;
   `;
 
-  HiddenToggles = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  `;
+  // HiddenToggles = styled.div`
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   position: relative;
+  // `;
 
-  Wrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  `;
+  // Wrapper = styled.div`
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   position: relative;
+  // `;
 
-  ToggleButton = styled.label`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 157px;
-    height: 24px;
-    color: white;
-    border: none;
-    border-radius: 15px;
-    padding: 0 15px;
-    background-color: #eaeef1;
-  `;
+  // ToggleButton = styled.label`
+  //   display: flex;
+  //   align-items: center;
+  //   justify-content: space-between;
+  //   width: 157px;
+  //   height: 24px;
+  //   color: white;
+  //   border: none;
+  //   border-radius: 15px;
+  //   padding: 0 15px;
+  //   background-color: #eaeef1;
+  // `;
 
-  AggInput = styled.input``;
+  // AggInput = styled.input``;
 
-  LeftLabel = styled.label<{ $active?: boolean }>`
-    flex: 1;
-    width: 30%;
-    border-radius: 15px;
-    text-align: left;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    z-index: 1000;
-    color: ${(props) => (props.active ? "#9FA1A3" : "#009CDF")};
-    background-color: ${(props) => (props.active ? "#eaeef1" : "white")};
-  `;
+  // LeftLabel = styled.label<{ $active?: boolean }>`
+  //   flex: 1;
+  //   width: 30%;
+  //   border-radius: 15px;
+  //   text-align: left;
+  //   font-family: Inter;
+  //   font-style: normal;
+  //   font-weight: 500;
+  //   font-size: 12px;
+  //   line-height: 15px;
+  //   z-index: 1000;
+  //   color: ${(props) => (props.active ? "#9FA1A3" : "#009CDF")};
+  //   background-color: ${(props) => (props.active ? "#eaeef1" : "white")};
+  // `;
 
-  RightLabel = styled.label<{ $active?: boolean }>`
-    flex: 1;
-    width: 30%;
-    text-align: right;
-    color: green;
-    border-radius: 15px;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 12px;
-    line-height: 15px;
-    z-index: 1000;
-    color: ${(props) => (props.active ? "#009CDF" : "#9FA1A3")};
-    background-color: ${(props) => (props.active ? "white" : "#eaeef1")};
-  `;
+  // RightLabel = styled.label<{ $active?: boolean }>`
+  //   flex: 1;
+  //   width: 30%;
+  //   text-align: right;
+  //   color: green;
+  //   border-radius: 15px;
+  //   font-family: Inter;
+  //   font-style: normal;
+  //   font-weight: 500;
+  //   font-size: 12px;
+  //   line-height: 15px;
+  //   z-index: 1000;
+  //   color: ${(props) => (props.active ? "#009CDF" : "#9FA1A3")};
+  //   background-color: ${(props) => (props.active ? "white" : "#eaeef1")};
+  // `;
 }
 
 const menuStyles = new MenuStyles();
