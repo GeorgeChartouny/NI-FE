@@ -5,7 +5,7 @@ import Table from "@mui/material/Table";
 import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
-import { TableBody } from "@mui/material/";
+import TableBody  from "@mui/material/TableBody";
 
 export const GridData = () => {
   const HeadTableStyle = {
