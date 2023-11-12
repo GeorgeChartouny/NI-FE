@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getAggData } from "../../api/aggregateDataApi";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
+import { useGetAggData } from "../../mutation";
 
 export const Menu = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
@@ -12,6 +13,8 @@ export const Menu = () => {
 
   const [value, setValue] = useState<boolean>();
   const [aggResult, setAggResult] = useState<object>();
+  const { mutate, isLoading, isError, data } = useGetAggData();
+
   // const data = {NeRadio,aggregatedTime,datetime_value};
 
   const sendRequest = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -21,13 +24,18 @@ export const Menu = () => {
       // setDatetime_value("2020-03-12 00:15:00");
       if (NeRadio && aggregatedTime && datetime_value) {
         console.log("if done");
-        const result = await getAggData({
+        // const result = await getAggData({
+        //   neRequested: NeRadio,
+        //   aggTime: aggregatedTime,
+        //   datetime_key: datetime_value,
+        // });
+        // setAggResult(result);
+        //console.log("aggResult", aggResult);
+        await mutate({
           neRequested: NeRadio,
           aggTime: aggregatedTime,
           datetime_key: datetime_value,
         });
-        setAggResult(result);
-        console.log("aggResult", aggResult);
       } else {
         console.log("else");
       }
@@ -88,7 +96,7 @@ export const Menu = () => {
               onChange={(e) => setAggregatedTime(e.target.value)}
             />
             Daily
-          </styles.Label> 
+          </styles.Label>
 
           {/* <styles.Wrapper>
             <styles.ToggleButton onClick={handleClick}>
