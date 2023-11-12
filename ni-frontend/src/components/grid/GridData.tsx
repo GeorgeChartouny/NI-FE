@@ -6,8 +6,7 @@ import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody  from "@mui/material/TableBody";
-import { useQuery } from "react-query";
-import { useGetAggData } from "../../mutation";
+
 
 export const GridData = () => {
   const HeadTableStyle = {
@@ -21,7 +20,7 @@ export const GridData = () => {
     textAlign: "left",
   };
 
- 
+
 
   return (
     <>
