@@ -7,7 +7,6 @@ export const Dashboard = () => {
 
  return (
   <styles.Container>
-    <div>Dashboard</div>
     <Menu/>
     <GridData/>
   </styles.Container>
