@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import TableBody from "@mui/material/TableBody";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
+import { Loading } from "../loading/Loading";
 
 export const GridData = () => {
   const HeadTableStyle = {
@@ -31,6 +32,7 @@ export const GridData = () => {
     console.log("isFetching", isFetching);
     console.log("error", error);
   }, [data]);
+  if(isFetching) return <Loading/>
   return (
     <>
       {data.length > 0 ? (
