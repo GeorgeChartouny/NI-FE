@@ -6,6 +6,8 @@ const initialState: DataState = {
   error: false,
   isFetching: false,
   errorMessage: "",
+  aggTime: "",
+
 };
 
 // initialize a reducer for the aggregated data
@@ -14,8 +16,9 @@ const AggDataSlice = createSlice({
   initialState,
   reducers: {
     //on start of the fetch process
-    fetchStart: (state) => {
+    fetchStart: (state,action:PayloadAction<any>) => {
       state.isFetching = true;
+      state.aggTime = action.payload;
     },
     // pass in the body in the payload
     setAggData: (state, action: PayloadAction<any[]>) => {

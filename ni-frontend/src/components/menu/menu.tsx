@@ -14,7 +14,6 @@ export const Menu = () => {
 
   const [value, setValue] = useState<boolean>();
   const [aggResult, setAggResult] = useState<object>();
-  // const data = {NeRadio,aggregatedTime,datetime_value};
   const dispatch = useDispatch();
   
 

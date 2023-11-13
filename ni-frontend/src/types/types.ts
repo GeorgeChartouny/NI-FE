@@ -3,10 +3,16 @@ export interface DataState {
   error: boolean;
   isFetching: boolean;
   errorMessage: string;
+  aggTime:string;
 }
 
-export default interface PostBodyType {
+export interface PostBodyType {
   neRequested: string;
   aggTime: string;
   datetime_key: string;
+}
+
+export  interface ChartDataType {
+time: string;
+value:number;
 }
