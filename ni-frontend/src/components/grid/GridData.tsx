@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import TableContainer from  "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -6,6 +6,8 @@ import TableHead from "@mui/material/TableHead";
 import TableCell from "@mui/material/TableCell";
 import TableRow from "@mui/material/TableRow";
 import TableBody  from "@mui/material/TableBody";
+import { useSelector } from "react-redux";
+import { RootState } from "../../redux/store";
 
 export const GridData = () => {
   const HeadTableStyle = {
@@ -19,6 +21,12 @@ export const GridData = () => {
     textAlign: "left",
   };
 
+  const {isFetching, data, error} = useSelector((state:RootState)=>state.data);
+  useEffect(()=>{
+console.log('data from useSelector', data)
+console.log('isFetching', isFetching);
+console.log('error', error)
+  },[data])
   return (
     <>
       <TableContainer
