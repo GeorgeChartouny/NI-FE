@@ -3,7 +3,7 @@ import baseApi from "./api";
 export const getAggData = async ({
   neRequested,
   aggTime,
-  datetime_key,
+  datetime_key
 }: {
   neRequested: string;
   aggTime: string;

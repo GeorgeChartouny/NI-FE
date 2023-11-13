@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import { getAggData } from "../../api/aggregateDataApi";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
+import {useDispatch} from "react-redux"
+import { fetchAggData } from "../../redux/AggDataCall";
 
 export const Menu = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
@@ -13,6 +15,8 @@ export const Menu = () => {
   const [value, setValue] = useState<boolean>();
   const [aggResult, setAggResult] = useState<object>();
   // const data = {NeRadio,aggregatedTime,datetime_value};
+  const dispatch = useDispatch();
+  
 
   const sendRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -21,14 +25,16 @@ export const Menu = () => {
       // setDatetime_value("2020-03-12 00:15:00");
       if (NeRadio && aggregatedTime && datetime_value) {
         console.log("if done");
-        const result = await getAggData({
-          neRequested: NeRadio,
-          aggTime: aggregatedTime,
-          datetime_key: datetime_value,
-        });
-        setAggResult(result);
-        console.log("aggResult", aggResult);
-      } else {
+        // const result = await getAggData({
+        //   neRequested: NeRadio,
+        //   aggTime: aggregatedTime,
+        //   datetime_key: datetime_value,
+        // });
+        // setAggResult(result);
+        // console.log("aggResult", aggResult);
+
+      fetchAggData(dispatch,{neRequested:NeRadio,aggTime:aggregatedTime,datetime_key:datetime_value});
+    } else {
         console.log("else");
       }
     } catch (error: any) {

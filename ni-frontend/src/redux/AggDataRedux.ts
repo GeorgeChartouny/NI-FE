@@ -1,5 +1,5 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import DataState from "../types/types";
+import {DataState} from "../types/types";
 
 const initialState: DataState = {
   data: [],
@@ -13,6 +13,7 @@ const AggDataSlice = createSlice({
   name: "AggData",
   initialState,
   reducers: {
+    //on start of the fetch process
     fetchStart: (state) => {
       state.isFetching = true;
     },
@@ -21,6 +22,7 @@ const AggDataSlice = createSlice({
       state.isFetching = false;
       state.data = action.payload;
     },
+    // on fetching error encoutering 
     fetchFailure: (state, action: PayloadAction<string>) => {
       state.isFetching = false;
       state.error = true;
