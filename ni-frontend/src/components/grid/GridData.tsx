@@ -50,7 +50,7 @@ export const GridData = () => {
                 <TableCell sx={HeadTableStyle}>DATETIME KEY</TableCell>
                 <TableCell sx={HeadTableStyle}>Time</TableCell>
                 {data[0].nE_TYPE !=='-' && <TableCell sx={HeadTableStyle}>NE Type</TableCell>}
-                {data[0].ne_ALIAS !=='-' && <TableCell sx={HeadTableStyle}>NE Alias</TableCell>}
+                {data[0].nE_ALIAS !=='-' && <TableCell sx={HeadTableStyle}>NE Alias</TableCell>}
                 <TableCell sx={HeadTableStyle}>RSL INPUT POWER</TableCell>
                 <TableCell sx={HeadTableStyle}>MAX RX LEVEL</TableCell>
                 <TableCell sx={HeadTableStyle}>RSL DEVIATION</TableCell>
