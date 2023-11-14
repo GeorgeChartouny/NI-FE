@@ -1,4 +1,3 @@
-import React, { useEffect } from "react";
 import TableContainer from "@mui/material/TableContainer";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
@@ -24,14 +23,9 @@ export const GridData = () => {
     color:"#790b0c"
   };
 
-  const { isFetching, data, error } = useSelector(
+  const { isFetching, data } = useSelector(
     (state: RootState) => state.data
   );
-  useEffect(() => {
-    console.log("data from useSelector", data);
-    console.log("isFetching", isFetching);
-    console.log("error", error);
-  }, [data]);
   if(isFetching) return <Loading/>
   return (
     <>

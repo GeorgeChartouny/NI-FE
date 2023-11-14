@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { ChartDataType } from "../../types/types";
 import { useSelector } from "react-redux";
@@ -17,7 +18,7 @@ import styles from "./LineChartComponent.styles";
 import { format } from "date-fns";
 
 export const LineChartComponent = () => {
-  const { isFetching, error, data } = useSelector(
+  const {data } = useSelector(
     (state: RootState) => state.data
   );
 

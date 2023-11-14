@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { getAggData } from "../../api/aggregateDataApi";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
 import {useDispatch} from "react-redux"
@@ -13,7 +12,6 @@ export const Menu = () => {
   );
 
   const [value, setValue] = useState<boolean>();
-  const [aggResult, setAggResult] = useState<object>();
   const dispatch = useDispatch();
   
 
