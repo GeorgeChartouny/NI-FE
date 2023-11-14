@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { screen600, tablet } from "../../utils/responsive";
 
 class MenuStyles {
   Container = styled.div`
@@ -19,6 +20,9 @@ class MenuStyles {
 
   Title = styled.h1`
     color: var(--secondary-color);
+    ${tablet({fontSize:"20px"})}
+
+
   `;
 
   Form = styled.form`
@@ -35,9 +39,8 @@ class MenuStyles {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
-    width: 400px;
+    width: 20vw;
     height: 50px;
-    /* border-left: 1px solid black; */
   `;
 
   BorderBreak = styled.div`
@@ -48,6 +51,10 @@ class MenuStyles {
   `;
   Label = styled.label`
     color: orange;
+    ${tablet({fontSize:"12px"})}
+    ${screen600({fontSize:"10px"})}
+
+
   `;
 
   // HiddenToggles = styled.div`

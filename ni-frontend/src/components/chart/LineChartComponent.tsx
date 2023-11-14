@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ChartDataType } from "../../types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
-import { Container, Typography } from "@mui/material";
+import { TableContainer, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
 import {
   LineChart,
@@ -48,17 +48,19 @@ export const LineChartComponent = () => {
   return (
     <>
       {data.length > 0 ? (
-        <Container
+        <TableContainer
           component={Paper}
           sx={{
             borderRadius: "15px",
             height: "50%",
+            maxWidth: "100vw",
             width: "95%",
             padding: "15px",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "center",
+            marginBottom: "30px",
           }}
         >
           <Typography variant="h5" sx={{ mb: 2 }}>
@@ -111,7 +113,7 @@ export const LineChartComponent = () => {
               MAX RX LEVEL
             </styles.Label>
           </styles.Form>
-        </Container>
+        </TableContainer>
       ) : (
         <></>
       )}

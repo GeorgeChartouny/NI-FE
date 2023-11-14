@@ -41,7 +41,7 @@ export const GridData = () => {
           sx={{
             borderRadius: "15px",
             height: "50%",
-            width: "78%",
+            width: "95%",
             padding: "5px",
             overflowY: "scroll",
             marginBottom:"30px"
