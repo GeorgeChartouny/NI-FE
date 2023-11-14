@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
 import {useDispatch} from "react-redux"
@@ -43,9 +43,7 @@ export const Menu = () => {
     setValue(!value);
   };
 
-  useEffect(() => {
-    console.log("aggregatedTime", aggregatedTime);
-  }, []);
+
 
   return (
     <styles.Container>
