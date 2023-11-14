@@ -52,10 +52,9 @@ export const LineChartComponent = () => {
           component={Paper}
           sx={{
             borderRadius: "15px",
-            height: "60%",
+            height: "50%",
             width: "95%",
             padding: "15px",
-            overflowX: "scroll",
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
