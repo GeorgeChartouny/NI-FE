@@ -14,30 +14,34 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import styles from "./LineChartComponent.styles";
+import { format } from "date-fns";
 
 export const LineChartComponent = () => {
   const { isFetching, error, data } = useSelector(
     (state: RootState) => state.data
   );
+
   const [kpiValue, setKpiValue] = useState<string>("rsL_INPUT_POWER");
   let chartData: ChartDataType[] = [];
 
   if (kpiValue === "rsL_DEVIATION") {
     chartData = data.map((item) => ({
-      time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
+      time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
       kpi: item.rsL_DEVIATION,
     }));
   } else if (kpiValue === "rsL_INPUT_POWER") {
     chartData = data.map((item) => ({
-      time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
+      time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
       kpi: item.rsL_INPUT_POWER,
     }));
   } else if (kpiValue === "maX_RX_LEVEL") {
     chartData = data.map((item) => ({
-      time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
+      time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
       kpi: item.maX_RX_LEVEL,
     }));
   }
+
+  chartData.sort((a, b) => (a.time < b.time ? -1 : 1));
 
   useEffect(() => {}, [chartData]);
 
@@ -48,9 +52,9 @@ export const LineChartComponent = () => {
           component={Paper}
           sx={{
             borderRadius: "15px",
-            height: "50%",
-            width: "70%",
-            padding: "5px",
+            height: "60%",
+            width: "95%",
+            padding: "15px",
             overflowX: "scroll",
             display: "flex",
             flexDirection: "column",
@@ -59,7 +63,7 @@ export const LineChartComponent = () => {
           }}
         >
           <Typography variant="h5" sx={{ mb: 2 }}>
-            KPIs
+            {kpiValue.toLocaleUpperCase().replaceAll("_", " ")} KPI
           </Typography>
           <ResponsiveContainer width="100%" height="85%">
             <LineChart data={chartData}>

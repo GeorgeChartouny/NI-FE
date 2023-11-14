@@ -41,9 +41,10 @@ export const GridData = () => {
           sx={{
             borderRadius: "15px",
             height: "50%",
-            width: "70%",
+            width: "78%",
             padding: "5px",
             overflowY: "scroll",
+            marginBottom:"30px"
           }}
         >
           <Table sx={{ minWidth: "650px" }} arial-label="simple table">

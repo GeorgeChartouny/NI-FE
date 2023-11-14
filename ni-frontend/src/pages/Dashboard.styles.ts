@@ -6,10 +6,11 @@ class DashboardStyles {
     height: 100vh;
     width:100vw;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items:center;
     justify-content: center;
     color: var(--tertiary-color);
+    padding-top: 20vh;
   `;
 
   Title = styled.h1``;
