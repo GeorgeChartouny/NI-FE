@@ -14,5 +14,5 @@ export interface PostBodyType {
 
 export  interface ChartDataType {
 time: string;
-value:number;
+kpi:number;
 }

@@ -16,9 +16,9 @@ const AggDataSlice = createSlice({
   initialState,
   reducers: {
     //on start of the fetch process
-    fetchStart: (state,action:PayloadAction<any>) => {
+    fetchStart: (state) => {
       state.isFetching = true;
-      state.aggTime = action.payload;
+    
     },
     // pass in the body in the payload
     setAggData: (state, action: PayloadAction<any[]>) => {

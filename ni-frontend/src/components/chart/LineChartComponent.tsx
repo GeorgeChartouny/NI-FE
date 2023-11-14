@@ -1,48 +1,46 @@
-import React, { useEffect } from "react";
-import {ChartDataType} from "../../types/types";
-// import { LineChart } from "@mui/x-charts/LineChart";
+import { useEffect, useState } from "react";
+import { ChartDataType } from "../../types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Container, Typography } from "@mui/material";
 import Paper from "@mui/material/Paper";
-import {format} from "date-fns";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  Tooltip,
+  Legend,
+  ResponsiveContainer,
+} from "recharts";
+import styles from "./LineChartComponent.styles";
 
 export const LineChartComponent = () => {
-  const { isFetching, error, data, aggTime } = useSelector(
+  const { isFetching, error, data } = useSelector(
     (state: RootState) => state.data
   );
-  let rslDeviationData: ChartDataType[] = [];
-  let rslInputPowerData: ChartDataType[] = [];
-  let maxRxLevel: ChartDataType[] = [];
+  const [kpiValue, setKpiValue] = useState<string>("rsL_INPUT_POWER");
+  let chartData: ChartDataType[] = [];
 
-  const chartData  = data.map((item) => ({
-    time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
-    kpi: item.maX_RX_LEVEL,
-  }));
-
-  const FilterAggData = () => {
-    data.map((d) => {
-      rslDeviationData.push({
-        time: new Date(d.timE_Stamp).toLocaleDateString(),
-        value: d.rsL_DEVIATION,
-      });
-      rslInputPowerData.push({
-        time: new Date(d.timE_Stamp).toLocaleDateString(),
-        value: d.rsL_INPUT_POWER,
-      });
-      maxRxLevel.push({
-        time: new Date(d.timE_Stamp).toLocaleDateString(),
-        value: d.maX_RX_LEVEL,
-      });
-    });
-  };
+  if (kpiValue === "rsL_DEVIATION") {
+    chartData = data.map((item) => ({
+      time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
+      kpi: item.rsL_DEVIATION,
+    }));
+  } else if (kpiValue === "rsL_INPUT_POWER") {
+    chartData = data.map((item) => ({
+      time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
+      kpi: item.rsL_INPUT_POWER,
+    }));
+  } else if (kpiValue === "maX_RX_LEVEL") {
+    chartData = data.map((item) => ({
+      time: new Date(item.timE_Stamp).toLocaleDateString(), // Formatting timestamp as per requirement
+      kpi: item.maX_RX_LEVEL,
+    }));
+  }
 
   useEffect(() => {
-    console.log('chartData', chartData)
-    FilterAggData();
-  }, [data]);
+  }, [chartData]);
 
   return (
     <>
@@ -55,44 +53,65 @@ export const LineChartComponent = () => {
             width: "70%",
             padding: "5px",
             overflowX: "scroll",
-
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-             <Typography variant="h5" sx={{ mb: 2 }}>
+          <Typography variant="h5" sx={{ mb: 2 }}>
             KPIs
-          </Typography> 
-        <ResponsiveContainer width="100%" height="85%">
-        
-          <LineChart
-            // colors={["#790b0c"]}
-            // leftAxis={[labelFontSize:"20",]}
-          //   xAxis={[
-          //     { 
-          //       dataKey: 'time',
-                
-          //      }
-          //     ]}
-          //   series={[
-          //     {
-          //       dataKey: 'value',
-          //     },
-          //   ]}
-          //   width={500}
-          //   height={300}
-          // dataset={chartData}
-          data = {chartData}
-            
-          >
-                    {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                    <XAxis dataKey="time" />
-                    <YAxis />
-                   <Tooltip />
-                   <Legend />
-                   <Line type="monotone" dataKey="kpi" stroke="#790b0c" strokeWidth={2} />
-
+          </Typography>
+          <ResponsiveContainer width="100%" height="85%">
+            <LineChart data={chartData}>
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line
+                type="monotone"
+                dataKey="kpi"
+                stroke="#790b0c"
+                strokeWidth={2}
+              />
             </LineChart>
-            </ResponsiveContainer>
-         </Container>
+          </ResponsiveContainer>
+          <styles.Form>
+            <styles.Label>
+              <input
+                type="radio"
+                name="kpi"
+                value="rsL_DEVIATION"
+                checked={kpiValue==="rsL_DEVIATION"}
+
+                onChange={(e) => setKpiValue(e.target.value)}
+              />
+              RSL DEVIATION
+            </styles.Label>
+            <styles.Label>
+              <input
+                type="radio"
+                name="kpi"
+                value="rsL_INPUT_POWER"
+                checked={kpiValue==="rsL_INPUT_POWER"}
+                onChange={(e) => setKpiValue(e.target.value)}
+              />
+              RSL INPUT POWER
+            </styles.Label>
+
+            <styles.Label>
+              <input
+                type="radio"
+                name="kpi"
+                value="maX_RX_LEVEL"
+                checked={kpiValue==="maX_RX_LEVEL"}
+
+                onChange={(e) => setKpiValue(e.target.value)}
+              />
+              MAX RX LEVEL
+            </styles.Label>
+          </styles.Form>
+        </Container>
       ) : (
         <></>
       )}

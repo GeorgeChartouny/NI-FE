@@ -11,7 +11,7 @@ export const fetchAggData =  async(dispatch: AppDispatch,{
     aggTime: string;
     datetime_key: string;
   })=> {
-    dispatch(fetchStart(aggTime));
+    dispatch(fetchStart());
     try {
        
         const res = await getAggData({neRequested,aggTime,datetime_key});
