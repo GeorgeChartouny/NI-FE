@@ -39,8 +39,7 @@ export const LineChartComponent = () => {
     }));
   }
 
-  useEffect(() => {
-  }, [chartData]);
+  useEffect(() => {}, [chartData]);
 
   return (
     <>
@@ -82,8 +81,7 @@ export const LineChartComponent = () => {
                 type="radio"
                 name="kpi"
                 value="rsL_DEVIATION"
-                checked={kpiValue==="rsL_DEVIATION"}
-
+                checked={kpiValue === "rsL_DEVIATION"}
                 onChange={(e) => setKpiValue(e.target.value)}
               />
               RSL DEVIATION
@@ -93,7 +91,7 @@ export const LineChartComponent = () => {
                 type="radio"
                 name="kpi"
                 value="rsL_INPUT_POWER"
-                checked={kpiValue==="rsL_INPUT_POWER"}
+                checked={kpiValue === "rsL_INPUT_POWER"}
                 onChange={(e) => setKpiValue(e.target.value)}
               />
               RSL INPUT POWER
@@ -104,8 +102,7 @@ export const LineChartComponent = () => {
                 type="radio"
                 name="kpi"
                 value="maX_RX_LEVEL"
-                checked={kpiValue==="maX_RX_LEVEL"}
-
+                checked={kpiValue === "maX_RX_LEVEL"}
                 onChange={(e) => setKpiValue(e.target.value)}
               />
               MAX RX LEVEL
