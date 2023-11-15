@@ -13,7 +13,7 @@ class GlobalStyles {
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: var(--small-font);
     transition: var(--primary-transition);
-    ${tablet({width:"50px",height:"20px",fontSize:"12px"})}
+    ${tablet({ width: "50px", height: "20px", fontSize: "12px" })}
 
     &:hover {
       color: var(--secondary-color);
@@ -24,14 +24,11 @@ class GlobalStyles {
         0 17px 50px 0 rgba(0, 0, 0, 0.19);
 
       cursor: pointer;
-    ${tablet({fontSize:"16px"})}
-
+      ${tablet({ fontSize: "16px" })}
     }
   `;
 
-  RadioButton = styled.input`
-  
-  `
+  RadioButton = styled.input``;
 }
 
 const globalStyles = new GlobalStyles();
