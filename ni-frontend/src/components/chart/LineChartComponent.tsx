@@ -82,7 +82,6 @@ return null;
           sx={{
             borderRadius: "15px",
             height: "50%",
-            maxWidth: "100vw",
             width: "95%",
             padding: "15px",
             display: "flex",
@@ -92,7 +91,7 @@ return null;
             marginBottom: "30px",
           }}
         >
-          <Typography variant="h5" sx={{ mb: 2 }}>
+          <Typography variant="h5" sx={{ mb: -2 }}>
             {kpiValue.toLocaleUpperCase().replaceAll("_", " ")} KPI
           </Typography>
           <ResponsiveContainer width="100%" height="85%">
