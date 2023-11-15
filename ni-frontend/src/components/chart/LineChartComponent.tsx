@@ -29,20 +29,48 @@ export const LineChartComponent = () => {
     chartData = data.map((item) => ({
       time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
       kpi: item.rsL_DEVIATION,
+      neValue: item.nE_TYPE ==="-" ? item.nE_ALIAS : item.nE_TYPE,
     }));
   } else if (kpiValue === "rsL_INPUT_POWER") {
     chartData = data.map((item) => ({
       time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
       kpi: item.rsL_INPUT_POWER,
+      neValue: item.nE_TYPE ==="-" ? item.nE_ALIAS : item.nE_TYPE,
+
     }));
   } else if (kpiValue === "maX_RX_LEVEL") {
     chartData = data.map((item) => ({
       time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
       kpi: item.maX_RX_LEVEL,
+      neValue: item.nE_TYPE ==="-" ? item.nE_ALIAS : item.nE_TYPE,
+
     }));
   }
 
   chartData.sort((a, b) => (a.time < b.time ? -1 : 1));
+
+  const CustomToolTip: React.FC<{
+    active?:boolean;
+     payload?: Array<{value:number; payload: ChartDataType}>
+      label?: string
+    }> = ({active,payload,label})=> {
+if(active && payload && payload.length>0){
+
+    const timeValueLabel:string = payload[0].payload.time;
+    const kpiLabel:number = payload[0].payload.kpi;
+    const neValueLabel: string = payload[0].payload.neValue; 
+  
+    return (
+      <div style={{ backgroundColor: `var(--semiSecondary-color) `, color:`var(--primary-color)`, padding: '5px', border: '1px solid #ccc' }}>
+         <p>{`NE: ${neValueLabel}`}</p>
+         <p>{`DateTime: ${timeValueLabel}`}</p>
+         <p>{`KPI: ${kpiLabel}`}</p>
+      </div>
+    );
+  
+}
+return null;
+  }
 
   useEffect(() => {}, [chartData]);
 
@@ -71,7 +99,7 @@ export const LineChartComponent = () => {
             <LineChart data={chartData}>
               <XAxis dataKey="time" />
               <YAxis />
-              <Tooltip />
+              <Tooltip content={<CustomToolTip />} />
               <Legend />
               <Line
                 type="monotone"

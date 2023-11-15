@@ -12,6 +12,9 @@
   --tertiary-color: #748494;
   --gold-color: #FFb81C;
 
+  --semiPrimary-color:rgba(7, 33, 50, 0.5);
+  --semiSecondary-color:rgba(121, 11, 12, 0.5);
+
   --primary-font:"Roboto serif";
 
   --hero-title: 60px;
