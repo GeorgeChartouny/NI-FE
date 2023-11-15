@@ -7,18 +7,11 @@ const CustomTheme = createTheme({
       styleOverrides: {
         input: {
           color: `var(--gold-color)`,
-          fontFamily:"Roboto",
-          fontWeight:"500"
+          fontFamily: "Roboto",
+          fontWeight: "500",
         },
       },
     },
-    // ReactDatePicker: {
-    //   styleOverrides: {
-    //     root: {
-    //       backgroundColor: "lightblue", // Customize calendar colors here
-    //     },
-    //   },
-    // },
   },
 });
 

@@ -8,7 +8,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import CustomTheme from "./DTPicker.styles";
 
 export const DTPicker = () => {
-  const defaultDateTime: string = "2022-04-01 00:00:00";
+  const defaultDateTime: string = "2020-03-11 00:00:00";
 
   const [value, setValue] = useState<Date | null>(
     parse(defaultDateTime, "yyyy-MM-dd HH:mm:ss", new Date())
