@@ -8,6 +8,7 @@ import TableBody from "@mui/material/TableBody";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Loading } from "../loading/Loading";
+import {format} from "date-fns"
 
 export const GridData = () => {
   const HeadTableStyle = {
@@ -26,10 +27,17 @@ export const GridData = () => {
   const { isFetching, data } = useSelector(
     (state: RootState) => state.data
   );
+
+  const dataFormatted = data.map((item) => ({
+    ...item,
+    timE_Stamp: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
+  }));
+   dataFormatted.sort((a, b) => (a.timE_Stamp < b.timE_Stamp ? -1 : 1));
+
   if(isFetching) return <Loading/>
   return (
     <>
-      {data.length > 0 ? (
+      {dataFormatted.length > 0 ? (
         <TableContainer
           component={Paper}
           sx={{
@@ -46,8 +54,8 @@ export const GridData = () => {
               <TableRow>
                 <TableCell sx={HeadTableStyle}>DATETIME KEY</TableCell>
                 <TableCell sx={HeadTableStyle}>Time</TableCell>
-                {data[0].nE_TYPE !=='-' && <TableCell sx={HeadTableStyle}>NE Type</TableCell>}
-                {data[0].nE_ALIAS !=='-' && <TableCell sx={HeadTableStyle}>NE Alias</TableCell>}
+                {dataFormatted[0].nE_TYPE !=='-' && <TableCell sx={HeadTableStyle}>NE Type</TableCell>}
+                {dataFormatted[0].nE_ALIAS !=='-' && <TableCell sx={HeadTableStyle}>NE Alias</TableCell>}
                 <TableCell sx={HeadTableStyle}>RSL INPUT POWER</TableCell>
                 <TableCell sx={HeadTableStyle}>MAX RX LEVEL</TableCell>
                 <TableCell sx={HeadTableStyle}>RSL DEVIATION</TableCell>
@@ -55,7 +63,7 @@ export const GridData = () => {
             </TableHead>
 
             <TableBody>
-                {data.map((rowData,index) => (
+                {dataFormatted.map((rowData,index) => (
               <TableRow key ={index}>
                   
                     <TableCell sx={BodyTableStyle}>{rowData.datetimE_KEY}</TableCell>
