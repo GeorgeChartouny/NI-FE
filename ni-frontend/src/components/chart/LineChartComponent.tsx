@@ -61,7 +61,7 @@ if(active && payload && payload.length>0){
     const neValueLabel: string = payload[0].payload.neValue; 
   
     return (
-      <div style={{ backgroundColor: `var(--semiSecondary-color) `, color:`var(--primary-color)`, padding: '5px', border: '1px solid #ccc' }}>
+      <div style={{ backgroundColor: `var(--semiSecondary-color) `, color:`var(--primary-color)`, padding: '5px', border: '1px solid #ccc' ,borderRadius:`var(--primary-radius)`}}>
          <p>{`NE: ${neValueLabel}`}</p>
          <p>{`DateTime: ${timeValueLabel}`}</p>
          <p>{`KPI: ${kpiLabel}`}</p>
