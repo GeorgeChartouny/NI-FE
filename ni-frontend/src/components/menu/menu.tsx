@@ -1,16 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect,useState } from "react";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
 import {useDispatch} from "react-redux"
 import { fetchAggData } from "../../redux/AggDataCall";
 import { DTPicker } from "../DateTimePicker/DTPicker";
+import { parse ,format} from "date-fns";
 
-export const Menu = () => {
+export const Menu:React.FC = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
   const [aggregatedTime, setAggregatedTime] = useState<string>("");
-  const [datetime_value, setDatetime_value] = useState<string>(
-    "2020-03-12 00:15:00"
-  );
+  const [datetime_value, setDatetime_value] = useState<string|null>("2020-03-11 00:00:00");
+
+ 
 
   const [value, setValue] = useState<boolean>();
   const dispatch = useDispatch();
@@ -20,7 +21,6 @@ export const Menu = () => {
     e.preventDefault();
     try {
       console.log("send");
-      // setDatetime_value("2020-03-12 00:15:00");
       if (NeRadio && aggregatedTime && datetime_value) {
         console.log("if done");
 
@@ -38,12 +38,23 @@ export const Menu = () => {
   };
 
 
+ 
+//callbackFunction to get the date from the child component DTPicker
+const handleDateChange = (selectedDate:string | null) => {
+ console.log('selectedDate', selectedDate)
+
+ setDatetime_value(selectedDate);
+}
+
+useEffect(() => {
+// console.log('dateValue', dateValue);
+});
 
   return (
     <styles.Container>
       <styles.Title>Dashboard</styles.Title>
       <styles.Form onSubmit={sendRequest}>
-        <DTPicker/>
+        <DTPicker onDateSelect = {handleDateChange}/>
         <styles.LabelContainer>
           <styles.Label>
             <input
