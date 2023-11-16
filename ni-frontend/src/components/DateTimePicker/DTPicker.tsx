@@ -6,6 +6,7 @@ import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
 import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { ThemeProvider } from "@mui/material/styles";
 import CustomTheme from "./DTPicker.styles";
+import styles from "./DTPickerComponenent.styles"
 
 
 
@@ -53,7 +54,7 @@ console.log('e', e)
               }}
             />
           </DemoContainer>
-          <p style={{cursor:"pointer", border:"1px solid black"}} onClick={()=> handleDateChange(null)}>Remove Date/Time</p>
+          <styles.PButton onClick={()=> handleDateChange(null)}>-</styles.PButton>
         </LocalizationProvider>
       </ThemeProvider>
     </>

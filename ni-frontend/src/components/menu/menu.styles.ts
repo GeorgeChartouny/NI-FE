@@ -45,7 +45,7 @@ class MenuStyles {
 
   BorderBreak = styled.div`
     border: 1px var(--secondary-color) solid;
-    height: 100%;
+    height: 50px;
     border-radius: var(--primary-radius);
     opacity: 0.7;
   `;

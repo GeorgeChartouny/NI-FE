@@ -63,6 +63,7 @@ export const Menu: React.FC = () => {
       <styles.Title>Dashboard</styles.Title>
       <styles.Form onSubmit={sendRequest}>
         <DTPicker onDateSelect={handleDateChange} />
+        <styles.BorderBreak />
         <styles.LabelContainer>
           <styles.Label>
             <input
