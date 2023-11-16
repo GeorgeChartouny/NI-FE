@@ -28,14 +28,18 @@ export const GridData = () => {
     (state: RootState) => state.data
   );
 
-  const dataFormatted = data.map((item) => ({
+  let dataFormatted :any[] = [];
+
+  if(data.length > 0) {
+
+   dataFormatted = data.map((item) => ({
     ...item,
     timE_Stamp: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
-    datetimE_KEY: format(new Date(item.datetimE_KEY), 'yyyy-MM-dd HH:mm:ss'),
+    // datetimE_KEY: format(new Date(item.datetimE_KEY), 'yyyy-MM-dd HH:mm:ss'),
 
   }));
    dataFormatted.sort((a, b) => (a.timE_Stamp < b.timE_Stamp ? -1 : 1));
-
+  }
   if(isFetching) return <Loading/>
   return (
     <>

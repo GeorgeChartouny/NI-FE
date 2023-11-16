@@ -3,15 +3,15 @@ import baseApi from "./api";
 export const getAggData = async ({
   neRequested,
   aggTime,
-  datetime_key
+  time_stamp
 }: {
   neRequested: string;
   aggTime: string;
-  datetime_key: string;
+  time_stamp: string | null;
 }) => {
   try {
     const response = await baseApi.post("getData/get-data", {
-       neRequested, aggTime, datetime_key ,
+       neRequested, aggTime, time_stamp ,
     });
     return response.data;
   } catch (error: any) {

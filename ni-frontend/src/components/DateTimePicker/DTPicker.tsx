@@ -22,10 +22,19 @@ export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect}) => {
     );
 
     const handleDateChange = (newDate:Date | null) => {
+        try {
         if(newDate){
             const dateFormatted = format(newDate,"yyyy-MM-dd HH:mm:ss")
-            setDateValue(newDate);
+        
             onDateSelect(dateFormatted);
+            console.log('newDate', newDate);
+            console.log('dateFormatted', dateFormatted)
+        }else {
+            onDateSelect(newDate);
+        }
+        setDateValue(newDate);
+        }catch(e){
+console.log('e', e)
         }
     }
   
@@ -44,6 +53,7 @@ export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect}) => {
               }}
             />
           </DemoContainer>
+          <p style={{cursor:"pointer", border:"1px solid black"}} onClick={()=> handleDateChange(null)}>Remove Date/Time</p>
         </LocalizationProvider>
       </ThemeProvider>
     </>

@@ -24,7 +24,7 @@ export const LineChartComponent = () => {
 
   const [kpiValue, setKpiValue] = useState<string>("rsL_INPUT_POWER");
   let chartData: ChartDataType[] = [];
-
+if(data.length >0){
   if (kpiValue === "rsL_DEVIATION") {
     chartData = data.map((item) => ({
       time: format(new Date(item.timE_Stamp), "yyyy-MM-dd HH:mm:ss"),
@@ -46,6 +46,7 @@ export const LineChartComponent = () => {
 
     }));
   }
+}
 
   chartData.sort((a, b) => (a.time < b.time ? -1 : 1));
 

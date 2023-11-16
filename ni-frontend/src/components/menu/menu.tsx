@@ -1,31 +1,34 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
-import {useDispatch} from "react-redux"
+import { useDispatch } from "react-redux";
 import { fetchAggData } from "../../redux/AggDataCall";
 import { DTPicker } from "../DateTimePicker/DTPicker";
-import { parse ,format} from "date-fns";
+import { parse, format } from "date-fns";
 
-export const Menu:React.FC = () => {
+export const Menu: React.FC = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
   const [aggregatedTime, setAggregatedTime] = useState<string>("");
-  const [datetime_value, setDatetime_value] = useState<string|null>("2020-03-11 00:00:00");
-
- 
+  const [datetime_value, setDatetime_value] = useState<string | null>(
+    "2020-03-11 00:00:00"
+  );
 
   const [value, setValue] = useState<boolean>();
   const dispatch = useDispatch();
-  
 
   const sendRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       console.log("send");
-      if (NeRadio && aggregatedTime && datetime_value) {
+      if (NeRadio && aggregatedTime) {
         console.log("if done");
 
-      fetchAggData(dispatch,{neRequested:NeRadio,aggTime:aggregatedTime,datetime_key:datetime_value});
-    } else {
+        fetchAggData(dispatch, {
+          neRequested: NeRadio,
+          aggTime: aggregatedTime,
+          time_stamp: datetime_value,
+        });
+      } else {
         console.log("else");
       }
     } catch (error: any) {
@@ -37,24 +40,29 @@ export const Menu:React.FC = () => {
     setValue(!value);
   };
 
+  //callbackFunction to get the date from the child component DTPicker
+  const handleDateChange = (selectedDate: string | null) => {
+    console.log("selectedDate", selectedDate);
+    try {
+      if (selectedDate == null) {
+        setDatetime_value(null);
+      } else {
+        setDatetime_value(selectedDate);
+      }
+    } catch (error: any) {
+      console.log("error", error);
+    }
+  };
 
- 
-//callbackFunction to get the date from the child component DTPicker
-const handleDateChange = (selectedDate:string | null) => {
- console.log('selectedDate', selectedDate)
-
- setDatetime_value(selectedDate);
-}
-
-useEffect(() => {
-// console.log('dateValue', dateValue);
-});
+  useEffect(() => {
+    // console.log('dateValue', dateValue);
+  });
 
   return (
     <styles.Container>
       <styles.Title>Dashboard</styles.Title>
       <styles.Form onSubmit={sendRequest}>
-        <DTPicker onDateSelect = {handleDateChange}/>
+        <DTPicker onDateSelect={handleDateChange} />
         <styles.LabelContainer>
           <styles.Label>
             <input
@@ -95,7 +103,7 @@ useEffect(() => {
               onChange={(e) => setAggregatedTime(e.target.value)}
             />
             Daily
-          </styles.Label> 
+          </styles.Label>
 
           {/* <styles.Wrapper>
             <styles.ToggleButton onClick={handleClick}>
