@@ -58,7 +58,7 @@ export const GridData = () => {
           <Table sx={{ minWidth: "650px" }} arial-label="simple table">
             <TableHead>
               <TableRow>
-                <TableCell sx={HeadTableStyle}>DATETIME KEY</TableCell>
+                {/* <TableCell sx={HeadTableStyle}>DATETIME KEY</TableCell> */}
                 <TableCell sx={HeadTableStyle}>Time</TableCell>
                 {dataFormatted[0].nE_TYPE !=='-' && <TableCell sx={HeadTableStyle}>NE Type</TableCell>}
                 {dataFormatted[0].nE_ALIAS !=='-' && <TableCell sx={HeadTableStyle}>NE Alias</TableCell>}
@@ -72,7 +72,7 @@ export const GridData = () => {
                 {dataFormatted.map((rowData,index) => (
               <TableRow key ={index}>
                   
-                    <TableCell sx={BodyTableStyle}>{rowData.datetimE_KEY}</TableCell>
+                    {/* <TableCell sx={BodyTableStyle}>{rowData.datetimE_KEY}</TableCell> */}
                     <TableCell sx={BodyTableStyle}>{rowData.timE_Stamp}</TableCell>
                     {rowData.nE_TYPE !=='-' && <TableCell sx={BodyTableStyle}>{rowData.nE_TYPE}</TableCell>}
                     {rowData.nE_ALIAS !=='-' && <TableCell sx={BodyTableStyle}>{rowData.nE_ALIAS}</TableCell>}

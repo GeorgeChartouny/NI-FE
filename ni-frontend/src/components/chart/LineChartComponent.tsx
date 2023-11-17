@@ -50,28 +50,53 @@ if(data.length >0){
 
   chartData.sort((a, b) => (a.time < b.time ? -1 : 1));
 
-  const CustomToolTip: React.FC<{
-    active?:boolean;
-     payload?: Array<{value:number; payload: ChartDataType}>
-      label?: string
-    }> = ({active,payload,label})=> {
-if(active && payload && payload.length>0){
-
-    const timeValueLabel:string = payload[0].payload.time;
-    const kpiLabel:number = payload[0].payload.kpi;
-    const neValueLabel: string = payload[0].payload.neValue; 
-  
-    return (
-      <div style={{ backgroundColor: `var(--semiSecondary-color) `, color:`var(--primary-color)`, padding: '5px', border: '1px solid #ccc' ,borderRadius:`var(--primary-radius)`}}>
-         <p>{`NE: ${neValueLabel}`}</p>
-         <p>{`DateTime: ${timeValueLabel}`}</p>
-         <p>{`KPI: ${kpiLabel}`}</p>
-      </div>
-    );
-  
-}
-return null;
+  interface FormattedData {
+    name: string;
+    data: { time: string; kpi: number }[];
   }
+  interface ChartData {
+    time: string;
+    kpi: number;
+    neValue: string;
+  }
+  const groupedData: FormattedData[] = chartData.reduce<FormattedData[]>((acc, cur) => {
+    const foundIndex = acc.findIndex((item) => item.name === cur.neValue);
+    if (foundIndex !== -1) {
+      acc[foundIndex].data.push({ time: cur.time, kpi: cur.kpi });
+    } else {
+      acc.push({ name: cur.neValue, data: [{ time: cur.time, kpi: cur.kpi }] });
+    }
+    return acc;
+  }, []);
+
+  const CustomToolTip: React.FC<{
+    active?: boolean;
+    payload?: Array<{ value: number; payload: ChartData; name: string }>;
+    label?: string;
+  }> = ({ active, payload }) => {
+    console.log('active', active);
+    console.log('payload', payload);
+    if (active && payload && payload.length) {
+      // console.log('payload', payload);
+      return (
+        <div style={{ backgroundColor: 'var(--semiSecondary-color)', color: 'var(--primary-color)', padding: '5px', border: '1px solid #ccc', borderRadius: 'var(--primary-radius)' }}>
+          {payload.map((entry, index) => (
+            <div key={index}>
+              <p>{`NE: ${entry.name}`}</p>
+              <p>{`DateTime: ${entry.payload.time}`}</p>
+              <p>{`KPI: ${entry.payload.kpi}`}</p>
+            </div>
+          ))}
+        </div>
+      );
+    }
+    return null;
+  };
+  useEffect(()=> {
+    console.log('groupedData', groupedData)
+  })
+
+
 
   useEffect(() => {}, [chartData]);
 
@@ -96,17 +121,24 @@ return null;
             {kpiValue.toLocaleUpperCase().replaceAll("_", " ")} KPI
           </Typography>
           <ResponsiveContainer width="100%" height="85%">
-            <LineChart data={chartData}>
-              <XAxis dataKey="time" />
-              <YAxis />
-              <Tooltip content={<CustomToolTip />} />
+            <LineChart data={groupedData} >
+              <XAxis dataKey="time" type="category" allowDuplicatedCategory={false} />
+              <YAxis dataKey="kpi" />
+              <Tooltip  content={<CustomToolTip/>} />
               <Legend />
+              {groupedData.map((data,index)=>(
+
               <Line
                 type="monotone"
                 dataKey="kpi"
+                data={data.data}
+                name={data.name}
+                key={index}
                 stroke="#790b0c"
                 strokeWidth={2}
               />
+              ))}
+
             </LineChart>
           </ResponsiveContainer>
           <styles.Form>
