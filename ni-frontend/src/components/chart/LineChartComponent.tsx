@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
-import { ChartDataType } from "../../types/types";
+import { ChartData, ChartDataType, FormattedData } from "../../types/types";
 import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { TableContainer, Typography } from "@mui/material";
@@ -50,15 +50,7 @@ if(data.length >0){
 
   chartData.sort((a, b) => (a.time < b.time ? -1 : 1));
 
-  interface FormattedData {
-    name: string;
-    data: { time: string; kpi: number }[];
-  }
-  interface ChartData {
-    time: string;
-    kpi: number;
-    neValue: string;
-  }
+
   const groupedData: FormattedData[] = chartData.reduce<FormattedData[]>((acc, cur) => {
     const foundIndex = acc.findIndex((item) => item.name === cur.neValue);
     if (foundIndex !== -1) {
@@ -74,8 +66,8 @@ if(data.length >0){
     payload?: Array<{ value: number; payload: ChartData; name: string }>;
     label?: string;
   }> = ({ active, payload }) => {
-    console.log('active', active);
-    console.log('payload', payload);
+    // console.log('active', active);
+    // console.log('payload', payload);
     if (active && payload && payload.length) {
       // console.log('payload', payload);
       return (

@@ -17,3 +17,16 @@ time: string;
 kpi:number;
 neValue:string;
 }
+export interface FormattedData {
+  name: string;
+  data: { time: string; kpi: number }[];
+}
+export interface ChartData {
+  time: string;
+  kpi: number;
+  neValue: string;
+}
+
+export interface DTPickerInterface {
+  onDateSelect: (date:string| null) => void;   
+ }

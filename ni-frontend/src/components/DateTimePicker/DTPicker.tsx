@@ -7,13 +7,12 @@ import { DateTimePicker } from "@mui/x-date-pickers/DateTimePicker";
 import { ThemeProvider } from "@mui/material/styles";
 import CustomTheme from "./DTPicker.styles";
 import styles from "./DTPickerComponenent.styles"
+import { DTPickerInterface } from "../../types/types";
 
 
 
 
-interface DTPickerInterface {
-    onDateSelect: (date:string| null) => void;   
-   }
+
 
 export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect}) => {
     const defaultDateTime = "2020-03-11 00:00:00";
