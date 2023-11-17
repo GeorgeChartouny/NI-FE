@@ -19,8 +19,6 @@ $ npm start
 #### Get KPIs
 Create a .env file in the root directory and add your api. Check the .env.example to get the variable name.
 
-Parameter	Type	Description
-api_key	string	Required. Your API key
 
 
 
