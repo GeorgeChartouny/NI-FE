@@ -28,5 +28,6 @@ export interface ChartData {
 }
 
 export interface DTPickerInterface {
-  onDateSelect: (date:string| null) => void;   
+  onDateSelect: (date:string| null) => void;  
+  label:string; 
  }

@@ -7,16 +7,18 @@ export const fetchAggData = async (
   {
     neRequested,
     aggTime,
-    time_stamp,
+    time_stampFrom,
+    time_stampTo
   }: {
     neRequested: string;
     aggTime: string;
-    time_stamp: string | null;
+    time_stampFrom: string | null;
+    time_stampTo: string | null;
   }
 ) => {
   dispatch(fetchStart());
   try {
-    const res = await getAggData({ neRequested, aggTime, time_stamp });
+    const res = await getAggData({ neRequested, aggTime, time_stampFrom,time_stampTo });
     console.log("res", res);
     if (res.status === 400) {
       dispatch(fetchFailure(res.title));

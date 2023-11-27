@@ -4,12 +4,14 @@ import global from "../../globalStyles/global";
 import { useDispatch } from "react-redux";
 import { fetchAggData } from "../../redux/AggDataCall";
 import { DTPicker } from "../DateTimePicker/DTPicker";
-import { parse, format } from "date-fns";
 
 export const Menu: React.FC = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
   const [aggregatedTime, setAggregatedTime] = useState<string>("");
-  const [datetime_value, setDatetime_value] = useState<string | null>(
+  const [fromDateTime, setFromDateTime] = useState<string | null>(
+    "2020-03-11 00:00:00"
+  );
+  const [toDateTime,setToDateTime] = useState<string|null>(
     "2020-03-11 00:00:00"
   );
 
@@ -26,7 +28,8 @@ export const Menu: React.FC = () => {
         fetchAggData(dispatch, {
           neRequested: NeRadio,
           aggTime: aggregatedTime,
-          time_stamp: datetime_value,
+          time_stampFrom: fromDateTime,
+          time_stampTo: toDateTime
         });
       } else {
         console.log("else");
@@ -41,13 +44,26 @@ export const Menu: React.FC = () => {
   };
 
   //callbackFunction to get the date from the child component DTPicker
-  const handleDateChange = (selectedDate: string | null) => {
+  const handleFromDateChange = (selectedDate: string | null) => {
     console.log("selectedDate", selectedDate);
     try {
       if (selectedDate == null) {
-        setDatetime_value(null);
+        setFromDateTime(null);
       } else {
-        setDatetime_value(selectedDate);
+        setFromDateTime(selectedDate);
+      }
+    } catch (error: any) {
+      console.log("error", error);
+    }
+  };
+
+  const handleToDateChange = (selectedDate: string | null) => {
+    console.log("selectedDate", selectedDate);
+    try {
+      if (selectedDate == null) {
+        setToDateTime(null);
+      } else {
+        setToDateTime(selectedDate);
       }
     } catch (error: any) {
       console.log("error", error);
@@ -62,7 +78,9 @@ export const Menu: React.FC = () => {
     <styles.Container>
       <styles.Title>Dashboard</styles.Title>
       <styles.Form onSubmit={sendRequest}>
-        <DTPicker onDateSelect={handleDateChange} />
+        <DTPicker onDateSelect={handleFromDateChange} label = "Starting Date/Time"/>
+        <DTPicker onDateSelect={handleToDateChange} label ="Ending Date/Time" />
+
         <styles.BorderBreak />
         <styles.LabelContainer>
           <styles.Label>

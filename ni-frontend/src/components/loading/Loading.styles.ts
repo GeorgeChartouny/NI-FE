@@ -12,6 +12,7 @@ class LoadingStyles {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    top:0;
   `;
 
   CompanyLogo = styled.div`

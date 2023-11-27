@@ -14,7 +14,7 @@ import { DTPickerInterface } from "../../types/types";
 
 
 
-export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect}) => {
+export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect,label}) => {
     const defaultDateTime = "2020-03-11 00:00:00";
 
     const [dateValue, setDateValue] = useState<Date | null>(
@@ -44,7 +44,7 @@ console.log('e', e)
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DemoContainer components={["DateTimePicker", "DateTimePicker"]}>
             <DateTimePicker
-              label="Pick a Date/Time"
+              label={label}
             //   value={value}
               value={dateValue}
               onChange={handleDateChange}

@@ -20,8 +20,6 @@ $ npm start
 Create a .env file in the root directory and add your api. Check the .env.example to get the variable name.
 
 
-
-
 ## API Reference
 
 #### Get all items
