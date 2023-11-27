@@ -32,7 +32,7 @@ export const Menu: React.FC = () => {
           time_stampTo: toDateTime
         });
       } else {
-        console.log("else");
+        alert("Both radio buttons are required to get the data.")
       }
     } catch (error: any) {
       console.log("Error getting data: " + error.message);
