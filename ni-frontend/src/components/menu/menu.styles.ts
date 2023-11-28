@@ -64,11 +64,10 @@ cursor: pointer;
 transition: var(--primary-transition);
 color: var(--primary-color);
 /* width:15px; */
-display: flex;
-justify-content: center;
 font-size: 5rem;
 /* height: 15px; */
-margin-right: 2vw;
+margin-right: 1vw;
+padding-bottom: 8px;
 
 &:hover{
     /* border-radius: 0; */

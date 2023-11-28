@@ -12,7 +12,15 @@ const CustomTheme = createTheme({
         },
       },
     },
+    MuiStack:{
+      styleOverrides:{
+        root:{
+          padding:"8px"
+        }
+      }
+    }
   },
+  
 });
 
 export default CustomTheme;
