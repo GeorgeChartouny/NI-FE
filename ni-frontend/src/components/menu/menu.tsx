@@ -5,6 +5,8 @@ import { useDispatch } from "react-redux";
 import { fetchAggData } from "../../redux/AggDataCall";
 import { DTPicker } from "../DateTimePicker/DTPicker";
 
+import Notification from "../Notification/Notification";
+
 export const Menu: React.FC = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
   const [aggregatedTime, setAggregatedTime] = useState<string>("");
@@ -17,6 +19,8 @@ export const Menu: React.FC = () => {
 
   const [value, setValue] = useState<boolean>();
   const dispatch = useDispatch();
+  const [ notify, setNotify] = useState({isOpen:false , message:'', type:''})
+  const [dateNull,setDateNull] = useState<boolean>(false);
 
   const sendRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -31,8 +35,16 @@ export const Menu: React.FC = () => {
           time_stampFrom: fromDateTime,
           time_stampTo: toDateTime
         });
+      
       } else {
-        alert("Both radio buttons are required to get the data.")
+        //alert("Both radio buttons are required to get the data.");
+   
+        setNotify({
+          isOpen:true,
+          message:'Both Radio Buttons are required.',
+          type:'info'
+        })
+        
       }
     } catch (error: any) {
       console.log("Error getting data: " + error.message);
@@ -51,6 +63,7 @@ export const Menu: React.FC = () => {
         setFromDateTime(null);
       } else {
         setFromDateTime(selectedDate);
+        setDateNull(false);
       }
     } catch (error: any) {
       console.log("error", error);
@@ -64,11 +77,17 @@ export const Menu: React.FC = () => {
         setToDateTime(null);
       } else {
         setToDateTime(selectedDate);
+        setDateNull(false);
+
       }
     } catch (error: any) {
       console.log("error", error);
     }
   };
+
+  const emptyDates = () => {
+setDateNull(true)
+  }
 
   useEffect(() => {
     // console.log('dateValue', dateValue);
@@ -78,8 +97,9 @@ export const Menu: React.FC = () => {
     <styles.Container>
       <styles.Title>Dashboard</styles.Title>
       <styles.Form onSubmit={sendRequest}>
-        <DTPicker onDateSelect={handleFromDateChange} label = "Starting Date/Time"/>
-        <DTPicker onDateSelect={handleToDateChange} label ="Ending Date/Time" />
+        <DTPicker onDateSelect={handleFromDateChange} label = "Starting Date/Time" nullDates={dateNull}/>
+        <DTPicker onDateSelect={handleToDateChange} label ="Ending Date/Time" nullDates = {dateNull} />
+        <styles.PButton onClick={()=> emptyDates()}>-</styles.PButton>
 
         <styles.BorderBreak />
         <styles.LabelContainer>
@@ -153,8 +173,22 @@ export const Menu: React.FC = () => {
           </styles.Wrapper> */}
         </styles.LabelContainer>
 
-        <global.SubmitButton type="submit">Send</global.SubmitButton>
+        <global.SubmitButton type="submit">Submit</global.SubmitButton>
       </styles.Form>
+      {/* {
+        alert ? (
+ <Stack sx={{ width: '100%' }} spacing={2}>
+                  <Alert severity="info">Both Radio buttons are required.</Alert>
+          </Stack>
+        ) : (
+          <></>
+        )
+      } */}
+
+      <Notification
+      notify={notify}
+      setNotify={setNotify}/>
+           
     </styles.Container>
   );
 };

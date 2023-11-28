@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { parse,format } from "date-fns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
@@ -14,7 +14,7 @@ import { DTPickerInterface } from "../../types/types";
 
 
 
-export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect,label}) => {
+export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect,nullDates,label}) => {
     const defaultDateTime = "2020-03-11 00:00:00";
 
     const [dateValue, setDateValue] = useState<Date | null>(
@@ -37,6 +37,14 @@ export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect,label}) => {
 console.log('e', e)
         }
     }
+
+    useEffect(()=>{
+console.log('nullDates', nullDates)
+      
+      if(nullDates === true){
+        handleDateChange(null);
+      }
+    },[nullDates]);
   
   return (
     <>
@@ -53,7 +61,7 @@ console.log('e', e)
               }}
             />
           </DemoContainer>
-          <styles.PButton onClick={()=> handleDateChange(null)}>-</styles.PButton>
+          {/* <styles.PButton onClick={()=> handleDateChange(null)}>-</styles.PButton> */}
         </LocalizationProvider>
       </ThemeProvider>
     </>
