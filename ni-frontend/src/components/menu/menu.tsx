@@ -57,7 +57,6 @@ export const Menu: React.FC = () => {
 
   //callbackFunction to get the date from the child component DTPicker
   const handleFromDateChange = (selectedDate: string | null) => {
-    console.log("selectedDate", selectedDate);
     try {
       if (selectedDate == null) {
         setFromDateTime(null);
@@ -71,7 +70,6 @@ export const Menu: React.FC = () => {
   };
 
   const handleToDateChange = (selectedDate: string | null) => {
-    console.log("selectedDate", selectedDate);
     try {
       if (selectedDate == null) {
         setToDateTime(null);

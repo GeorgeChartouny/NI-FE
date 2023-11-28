@@ -27,8 +27,7 @@ export const DTPicker: React.FC<DTPickerInterface> = ({onDateSelect,nullDates,la
             const dateFormatted = format(newDate,"yyyy-MM-dd HH:mm:ss")
         
             onDateSelect(dateFormatted);
-            console.log('newDate', newDate);
-            console.log('dateFormatted', dateFormatted)
+
         }else {
             onDateSelect(newDate);
         }
@@ -39,7 +38,6 @@ console.log('e', e)
     }
 
     useEffect(()=>{
-console.log('nullDates', nullDates)
       
       if(nullDates === true){
         handleDateChange(null);
