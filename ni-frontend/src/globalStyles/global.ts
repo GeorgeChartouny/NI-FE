@@ -8,7 +8,7 @@ class GlobalStyles {
     background-color: var(--secondary-color);
     border: none;
     border-radius: var(--button-radius);
-    color: var(--primary-color);
+    color: white;
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2),
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: var(--small-font);
@@ -16,7 +16,7 @@ class GlobalStyles {
     ${tablet({ width: "50px", height: "20px", fontSize: "12px" })}
 
     &:hover {
-      color: var(--secondary-color);
+      color: var(--gold-color);
       background-color: var(--primary-color);
       font-size: var(--body-font);
       font-weight: bold;
