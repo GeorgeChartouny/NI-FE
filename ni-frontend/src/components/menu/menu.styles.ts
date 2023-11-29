@@ -50,7 +50,7 @@ class MenuStyles {
     opacity: 0.7;
   `;
   Label = styled.label`
-    color: orange;
+    color: var(--gold-color);
     ${tablet({fontSize:"12px"})}
     ${screen600({fontSize:"10px"})}
 
