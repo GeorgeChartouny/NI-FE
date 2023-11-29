@@ -137,6 +137,55 @@ padding-bottom: 8px;
   //   color: ${(props) => (props.active ? "#009CDF" : "#9FA1A3")};
   //   background-color: ${(props) => (props.active ? "white" : "#eaeef1")};
   // `;
+
+
+
+
+
+
+
+ LabelToggle = styled.label`
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+`;
+
+Switch = styled.div`
+position: relative;
+width: 60px;
+height: 28px;
+background: var(--secondary-color);
+border-radius: 32px;
+padding: 4px;
+transition: 300ms all;
+
+&:before {
+  transition: 300ms all;
+  content: "";
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  border-radius: 35px;
+  top: 50%;
+  left: 4px;
+  background: white;
+  transform: translate(0, -50%);
+}
+`;
+
+Input = styled.input`
+  display: none;
+
+  &:checked + ${this.Switch} {
+    background: var(--primary-color);
+
+    &:before {
+      transform: translate(32px, -50%);
+    }
+  }
+`;
+
 }
 
 const menuStyles = new MenuStyles();

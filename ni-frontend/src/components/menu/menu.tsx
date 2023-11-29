@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from "react";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
 import { useDispatch } from "react-redux";
@@ -91,6 +91,18 @@ setDateNull(true)
     // console.log('dateValue', dateValue);
   });
 
+  const [checked, setChecked] = useState(false); // store value
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{
+    setChecked(e.target.checked)
+if(checked){
+  setAggregatedTime("TRANS_MW_AGG_SLOT_DAILY")
+}else {
+  setAggregatedTime("TRANS_MW_AGG_SLOT_HOURLY");
+}
+  } 
+
+
   return (
     <styles.Container>
       <styles.Title>Dashboard</styles.Title>
@@ -123,7 +135,7 @@ setDateNull(true)
         </styles.LabelContainer>
 
         <styles.LabelContainer>
-          <styles.Label>
+          {/* <styles.Label>
             <input
               type="radio"
               value="TRANS_MW_AGG_SLOT_HOURLY"
@@ -140,7 +152,16 @@ setDateNull(true)
               onChange={(e) => setAggregatedTime(e.target.value)}
             />
             Daily
-          </styles.Label>
+          </styles.Label> */}
+
+          
+<styles.LabelToggle>
+      <span> Selecting {checked ? 'Hourly' : 'Daily'}</span>
+      <styles.Input checked={checked} type="checkbox" onChange={handleChange} />
+      {/* <span> {checked ? '' : 'Daily'}</span> */}
+
+      <styles.Switch />
+    </styles.LabelToggle>
 
           {/* <styles.Wrapper>
             <styles.ToggleButton onClick={handleClick}>
