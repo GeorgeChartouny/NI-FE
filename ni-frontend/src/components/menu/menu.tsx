@@ -87,9 +87,7 @@ export const Menu: React.FC = () => {
 setDateNull(true)
   }
 
-  useEffect(() => {
-    // console.log('dateValue', dateValue);
-  });
+
 
   const [checked, setChecked] = useState(false); // store value
 
@@ -163,34 +161,6 @@ if(checked){
 
       <styles.Switch />
     </styles.LabelToggle>
-
-          {/* <styles.Wrapper>
-            <styles.ToggleButton onClick={handleClick}>
-              <styles.LeftLabel active={value}>
-                <styles.AggInput
-                  type="radio"
-                  value="TRANS_MW_AGG_SLOT_DAILY"
-                  name="aggTime"
-                  onChange={(e: {
-                    target: { value: React.SetStateAction<string> };
-                  }) => setAggregatedTime(e.target.value)}
-                />
-                Daily
-              </styles.LeftLabel>
-
-              <styles.RightLabel active={value}>
-                <styles.AggInput
-                  type="radio"
-                  value="TRANS_MW_AGG_SLOT_HOURLY"
-                  name="aggTime"
-                  onChange={(e: {
-                    target: { value: React.SetStateAction<string> };
-                  }) => setAggregatedTime(e.target.value)}
-                />
-                Hourly
-              </styles.RightLabel>
-            </styles.ToggleButton>
-          </styles.Wrapper> */}
         </styles.LabelContainer>
 
         <global.SubmitButton type="submit">Submit</global.SubmitButton>
