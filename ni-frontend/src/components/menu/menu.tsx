@@ -9,7 +9,7 @@ import Notification from "../Notification/Notification";
 
 export const Menu: React.FC = () => {
   const [NeRadio, setNeRadio] = useState<string>("");
-  const [aggregatedTime, setAggregatedTime] = useState<string>("");
+  const [aggregatedTime, setAggregatedTime] = useState<string>("TRANS_MW_AGG_SLOT_DAILY");
   const [fromDateTime, setFromDateTime] = useState<string | null>(
     "2020-03-11 00:00:00"
   );
@@ -102,11 +102,6 @@ if(checked){
 }
   } 
 
-  useEffect(() => {
-    if(checked) {
-      setAggregatedTime("TRANS_MW_AGG_SLOT_DAILY")
-    }
-  }, []);
   
 
   return (
