@@ -41,7 +41,7 @@ export const Menu: React.FC = () => {
    
         setNotify({
           isOpen:true,
-          message:'Both Radio Buttons are required.',
+          message:'You need choose between NeType and NeAlias.',
           type:'info'
         })
         
@@ -102,6 +102,12 @@ if(checked){
 }
   } 
 
+  useEffect(() => {
+    if(checked) {
+      setAggregatedTime("TRANS_MW_AGG_SLOT_DAILY")
+    }
+  }, []);
+  
 
   return (
     <styles.Container>
