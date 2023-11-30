@@ -124,6 +124,10 @@ Input = styled.input`
   }
 `;
 
+SpanLabel = styled.span`
+  width:30px;
+`;
+
 }
 
 const menuStyles = new MenuStyles();

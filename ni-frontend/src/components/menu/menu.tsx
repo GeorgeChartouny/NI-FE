@@ -152,11 +152,11 @@ if(checked){
 
           
 <styles.LabelToggle>
-      <span> Selecting {checked ? 'Hourly' : 'Daily'}</span>
+      <styles.SpanLabel>  {checked ? '' : 'Daily'}</styles.SpanLabel>
       <styles.Input checked={checked} type="checkbox" onChange={handleChange} />
-      {/* <span> {checked ? '' : 'Daily'}</span> */}
 
       <styles.Switch />
+      <styles.SpanLabel> {checked ? 'Hourly' : ''}</styles.SpanLabel>
     </styles.LabelToggle>
         </styles.LabelContainer>
 
