@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import styles from "./menu.styles";
 import global from "../../globalStyles/global";
 import { useDispatch } from "react-redux";
@@ -17,7 +17,6 @@ export const Menu: React.FC = () => {
     "2020-03-11 00:00:00"
   );
 
-  const [value, setValue] = useState<boolean>();
   const dispatch = useDispatch();
   const [ notify, setNotify] = useState({isOpen:false , message:'', type:''})
   const [dateNull,setDateNull] = useState<boolean>(false);
@@ -25,9 +24,9 @@ export const Menu: React.FC = () => {
   const sendRequest = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      console.log("send");
+      // console.log("send");
       if (NeRadio && aggregatedTime) {
-        console.log("if done");
+        // console.log("if done");
 
         fetchAggData(dispatch, {
           neRequested: NeRadio,
@@ -162,9 +161,12 @@ if(checked){
 
         <global.SubmitButton type="submit">Submit</global.SubmitButton>
       </styles.Form>
-      <Notification
-      notify={notify}
-      setNotify={setNotify}/>
+      {notify.type &&(
+
+        <Notification
+        notify={notify}
+        setNotify={setNotify}/>
+        ) }
            
     </styles.Container>
   );
