@@ -51,9 +51,6 @@ export const Menu: React.FC = () => {
     }
   };
 
-  const handleClick = () => {
-    setValue(!value);
-  };
 
   //callbackFunction to get the date from the child component DTPicker
   const handleFromDateChange = (selectedDate: string | null) => {
@@ -165,16 +162,6 @@ if(checked){
 
         <global.SubmitButton type="submit">Submit</global.SubmitButton>
       </styles.Form>
-      {/* {
-        alert ? (
- <Stack sx={{ width: '100%' }} spacing={2}>
-                  <Alert severity="info">Both Radio buttons are required.</Alert>
-          </Stack>
-        ) : (
-          <></>
-        )
-      } */}
-
       <Notification
       notify={notify}
       setNotify={setNotify}/>

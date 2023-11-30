@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { tablet } from "../utils/responsive";
+import { tablet,screen1380 } from "../utils/responsive";
 
 class GlobalStyles {
   SubmitButton = styled.button`
@@ -13,7 +13,8 @@ class GlobalStyles {
       0 6px 20px 0 rgba(0, 0, 0, 0.19);
     font-size: var(--small-font);
     transition: var(--primary-transition);
-    ${tablet({ width: "50px", height: "20px", fontSize: "12px" })}
+    ${screen1380({width:"75px",height:"34px",fontSize:"15px"})};
+    ${tablet({ width: "50px", height: "20px", fontSize: "12px" })};
 
     &:hover {
       color: var(--gold-color);

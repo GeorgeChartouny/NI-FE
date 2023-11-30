@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { screen600, tablet } from "../../utils/responsive";
+import { screen1380, screen600, tablet } from "../../utils/responsive";
 
 class MenuStyles {
   Container = styled.div`
@@ -16,6 +16,7 @@ class MenuStyles {
     top: 0;
     margin-top: 5vh;
     padding: 0 2vw;
+    ${screen1380({height:"15vh",alignItems:"baseline",overflowY:"auto"})}
   `;
 
   Title = styled.h1`
@@ -32,6 +33,8 @@ class MenuStyles {
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    /* flex-wrap: wrap; */
+    ${screen1380({flexWrap:"wrap",fontSize:"10px",justifyContent:"start"})}
   `;
 
   LabelContainer = styled.div`
@@ -41,6 +44,7 @@ class MenuStyles {
     align-items: center;
     width: 20vw;
     height: 50px;
+    ${screen1380({width:"15vw"})}
   `;
 
   BorderBreak = styled.div`
