@@ -11,7 +11,6 @@ npm install
 ## Usage
 To start the application.
 ```bash
-# Connect both your computer and mobile phone to the same Wi-fi network
 run the following:
 $ npm start
 
