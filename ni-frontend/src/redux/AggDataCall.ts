@@ -19,9 +19,9 @@ export const fetchAggData = async (
   dispatch(fetchStart());
   try {
     const res = await getAggData({ neRequested, aggTime, time_stampFrom,time_stampTo });
-    // console.log("res ==>", res);
-    if (res.status === 400) {
-      dispatch(fetchFailure(res.title));
+    console.log("res ==>", res);
+    if (res && (res.status === 400 || res.message)) {
+      dispatch(fetchFailure(res.message));
     } else {
       dispatch(setAggData(res));
     }

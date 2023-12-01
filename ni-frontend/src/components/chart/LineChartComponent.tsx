@@ -18,7 +18,7 @@ import styles from "./LineChartComponent.styles";
 import { format } from "date-fns";
 
 export const LineChartComponent = () => {
-  const {data } = useSelector(
+  const {data , error} = useSelector(
     (state: RootState) => state.data
   );
 
@@ -94,7 +94,7 @@ if(data.length >0){
 
   return (
     <>
-      {data.length > 0 ? (
+      {data.length > 0  && !error ? (
         <TableContainer
           component={Paper}
           sx={{

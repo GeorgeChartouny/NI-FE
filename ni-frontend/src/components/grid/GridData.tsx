@@ -9,6 +9,8 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../redux/store";
 import { Loading } from "../loading/Loading";
 import {format} from "date-fns"
+import {useEffect, useState} from "react";
+import Notification from "../Notification/Notification";
 
 export const GridData = () => {
   const HeadTableStyle = {
@@ -24,9 +26,10 @@ export const GridData = () => {
     color:"#790b0c"
   };
 
-  const { isFetching, data } = useSelector(
+  const { isFetching, data, error, errorMessage } = useSelector(
     (state: RootState) => state.data
   );
+  const [ notify, setNotify] = useState({isOpen:false , message:'', type:''})
 
   let dataFormatted :any[] = [];
 
@@ -40,10 +43,26 @@ export const GridData = () => {
   }));
    dataFormatted.sort((a, b) => (a.timE_Stamp < b.timE_Stamp ? -1 : 1));
   }
+
+  useEffect(()=> {
+    console.log('error', error);
+    console.log('errorMessage', errorMessage);
+
+    if(error) {
+
+      setNotify({
+        isOpen:true,
+        message:`Error fetching data: ${errorMessage}` ,
+        type:'error'
+      })
+    }
+  },[error, errorMessage]);
+
   if(isFetching) return <Loading/>
+
   return (
     <>
-      {dataFormatted.length > 0 ? (
+      {dataFormatted.length > 0 && !error ? (
         <TableContainer
           component={Paper}
           sx={{
@@ -88,6 +107,13 @@ export const GridData = () => {
       ) : (
         <h1>No Data to show</h1>
       )}
+
+{notify.type &&(
+
+<Notification
+notify={notify}
+setNotify={setNotify}/>
+) }
     </>
   );
 };

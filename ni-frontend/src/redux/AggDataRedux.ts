@@ -18,12 +18,14 @@ const AggDataSlice = createSlice({
     //on start of the fetch process
     fetchStart: (state) => {
       state.isFetching = true;
+      state.error = false;
     
     },
     // pass in the body in the payload
     setAggData: (state, action: PayloadAction<any[]>) => {
       state.isFetching = false;
       state.data = action.payload;
+      state.error = false;
     },
     // on fetching error encoutering 
     fetchFailure: (state, action: PayloadAction<string>) => {
