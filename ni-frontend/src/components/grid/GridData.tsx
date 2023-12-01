@@ -45,8 +45,6 @@ export const GridData = () => {
   }
 
   useEffect(()=> {
-    console.log('error', error);
-    console.log('errorMessage', errorMessage);
 
     if(error) {
 
